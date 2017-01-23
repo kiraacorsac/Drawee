@@ -1,0 +1,43 @@
+﻿@viewModel Drawee.ViewModels.SetupViewModel, Drawee
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <p>
+        Create a guest:
+        <dot:TextBox Text="{value: NewGuestDrawer}" />
+        <dot:Button Text="Add" Click="{command: AddNewGuestDrawer()}" />
+    </p>
+
+    <dot:Repeater DataSource="{value: Drawers }" WrapperTagName="ul">
+        <ItemTemplate>
+            <li>
+                <dot:CheckBox Text="{value: Name}" CheckedItems="{value: _parent.PickedDrawers}" CheckedValue="{value: _this}" />
+            </li>
+        </ItemTemplate>
+    </dot:Repeater>
+
+    <p>
+        <dot:LinkButton Click="{command: GeneratePairs()}" href="">
+            Generate pairs
+        </dot:LinkButton>
+        <br />
+        <dot:RouteLink RouteName="Results">Go to results</dot:RouteLink>
+        <br />
+        <dot:Repeater DataSource="{value: PickedDrawers }" WrapperTagName="ul">
+            <ItemTemplate>
+                <li>
+                    {{value: _this.Name}}
+                </li>
+            </ItemTemplate>
+        </dot:Repeater>
+</p>
+</body>
+</html>
