@@ -5,9 +5,10 @@ using System.Web;
 
 namespace Drawee.BL
 {
-    public class Result
+    public class UIException : Exception
     {
-        public Drawer Drawer { get; set; }
-        public Drawer Drawee { get; set; }
+        public UIException(string message) : base(message)
+        {
+        }
     }
 }

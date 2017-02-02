@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Drawee.BL
 {
-    public class Generation
+    public class DrawingPair
     {
-        public IList<DrawingPair> PairedDrawers { get; private set; }
-
+        public Drawer Drawer { get; set; }
+        public Drawer Drawee { get; set; }
     }
 }

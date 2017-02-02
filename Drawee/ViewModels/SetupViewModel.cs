@@ -20,7 +20,9 @@ namespace Drawee.ViewModels
 
         public SetupViewModel()
         {
-            Drawers = DrawerService.Instance.GetCommonUsers();
+            var task = JsonStorageService.Instance.GetDrawersAsync();
+            task.Wait();
+            Drawers = task.Result;
         }
 
         public void AddNewGuestDrawer()

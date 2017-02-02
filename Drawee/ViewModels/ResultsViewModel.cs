@@ -13,8 +13,8 @@ namespace Drawee.ViewModels
         public string ResultAcessee { get; set; }
         public DateTime LastGeneration { get; set; }
         public IEnumerable<Drawer> Drawers { get; set; }
-        public IEnumerable<Result> Results { get; set; }
-        public IEnumerable<Result> SelectiveResults { get; set; }
+        public IEnumerable<DrawingPair> Results { get; set; }
+        public IEnumerable<DrawingPair> SelectiveResults { get; set; }
         public string Filesys { get; set; }
         public int Val { get; set; }
         public string Pastebin { get; set; }
@@ -65,7 +65,7 @@ namespace Drawee.ViewModels
             Results = serv.PairedDrawers;
             Drawers = serv.Drawers;
             Pastebin = serv.Paste;
-            SelectiveResults = new List<Result>();
+            SelectiveResults = new List<DrawingPair>();
         }
 
     }
