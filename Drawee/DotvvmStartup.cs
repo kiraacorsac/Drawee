@@ -21,8 +21,8 @@ namespace Drawee
 
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
-            config.RouteTable.Add("Default", "", "Views/setup.dothtml");
-            config.RouteTable.Add("Results", "res", "Views/results.dothtml");
+            config.RouteTable.Add("Setup", "setup", "Views/setup.dothtml");
+            config.RouteTable.Add("Results", "", "Views/results.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    
@@ -30,7 +30,12 @@ namespace Drawee
 
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
         {
-            // register code-only controls and markup controls
+            config.Markup.Controls.Add(new DotvvmControlConfiguration()
+            {
+                TagPrefix = "lsk",
+                Namespace = "Drawee.Controls",
+                Assembly = "Drawee"
+            });
         }
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)

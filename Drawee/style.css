@@ -1,11 +1,16 @@
 ﻿
 body {
-    font-family: Open Sans,Arial;
-    color: #555;
+    font-family: Open Sans,'Comic Sans MS';
+    color: #ff3fd2;
     font-size: 16px;
     margin: 2em auto;
-    max-width: 400px;
+    max-width: 470px;
     padding: 1em;
     line-height: 1.4;
-    text-align: justify
+    text-align: center
+}
+.img-row{display:flex; flex-wrap:wrap;}
+.frame {
+    font-family: Open Sans,'Comic Sans MS';
+    color: #ff3fd2;
 }

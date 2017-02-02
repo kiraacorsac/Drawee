@@ -9,16 +9,45 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <dot:TextBox Text="{value: ResultAcessee}" />
-    <dot:Button Click="{command: ComputeSelectiveResults()}" />
-    <dot:Repeater DataSource="{value: SelectiveResults}" WrapperTagName="ul">
+    {{value: Pastebin}}
+
+    Last generation: <dot:Literal ValueType="DateTime" Text="{value:LastGeneration}" FormatString="d.M.yyyy H:mm"/><br/>
+    Joined players:
+    <dot:Repeater DataSource="{value: Drawers}" WrapperTagName="p">
         <ItemTemplate>
-            <li>
-                <dot:Literal Text="{value: Drawer.Name}" /> draws
-                <dot:Literal Text="{value: Drawee.Name}" />
-            </li>
+            <dot:Literal Text="{value: Name}" />,
         </ItemTemplate>
     </dot:Repeater>
+    <form>
+        <dot:TextBox Text="{value: ResultAcessee}" />
+        <dot:Button Text="Show results" Click="{command: ComputeSelectiveResults()}" IsSubmitButton="true" />
+    </form>
+    <dot:Repeater DataSource="{value: SelectiveResults}">
+        <ItemTemplate>
+            You draw:
+            <dot:Literal Text="{value: Drawee.Name}" />!
+            <dot:Button Text="Unhide pictures" Click="{command: _parent.PicturesVisible = !_parent.PicturesVisible}" />
+            <div Visible="{value: _parent.PicturesVisible}">
+                <a href="{value: Drawee.Icon}">
+                    <img src="{value: Drawee.Icon}" width="400px" />
+                </a>
+                <br />
+                <a href="{value: Drawee.Refsheet}">
+                    <img src="{value: Drawee.Refsheet}" href="{value: Drawee.Icon}" width="400px" />
+                </a>
+                <dot:Repeater DataSource="{value: Drawee.InterestingLinks}" >
+                    <ItemTemplate>
+                            <a href="{value: _this}">Relevant link</a><br/>
+                    </ItemTemplate>
+                </dot:Repeater>
+            </div>
+
+        </ItemTemplate>
+    </dot:Repeater>
+    <dot:RouteLink RouteName="Setup" Text="Go to setup"/>
+    <dot:Button Click="{command: Write()}">Write</dot:Button>
+    <dot:Button Click="{command: Read()}">Read</dot:Button>
+    <dot:Literal Text="{value: Filesys}"></dot:Literal>
 </body>
 </html>
 

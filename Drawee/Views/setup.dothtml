@@ -10,34 +10,28 @@
 
 </head>
 <body>
-    <p>
-        Create a guest:
+    <form>
+        Add guest:
         <dot:TextBox Text="{value: NewGuestDrawer}" />
-        <dot:Button Text="Add" Click="{command: AddNewGuestDrawer()}" />
-    </p>
+        <dot:Button Text="Add" Click="{command: AddNewGuestDrawer()}" IsSubmitButton="true" />
+    </form>
 
-    <dot:Repeater DataSource="{value: Drawers }" WrapperTagName="ul">
-        <ItemTemplate>
-            <li>
-                <dot:CheckBox Text="{value: Name}" CheckedItems="{value: _parent.PickedDrawers}" CheckedValue="{value: _this}" />
-            </li>
-        </ItemTemplate>
-    </dot:Repeater>
-
-    <p>
-        <dot:LinkButton Click="{command: GeneratePairs()}" href="">
-            Generate pairs
-        </dot:LinkButton>
-        <br />
-        <dot:RouteLink RouteName="Results">Go to results</dot:RouteLink>
-        <br />
-        <dot:Repeater DataSource="{value: PickedDrawers }" WrapperTagName="ul">
+    <div class="img-row">
+        <dot:Repeater DataSource="{value: Drawers }" WrapperTagName="center">
             <ItemTemplate>
-                <li>
-                    {{value: _this.Name}}
-                </li>
+                <lsk:IconCheckbox Width="150px" Icon="{value: Icon}" Name="{value: Name}" Checked="{value: _this.Picked}" CheckedValue="{value: _this}" />
             </ItemTemplate>
         </dot:Repeater>
-</p>
+    </div>
+
+    <p>
+        <dot:LinkButton Click="{command: GeneratePairs()}" href="">Generate pairs</dot:LinkButton>
+        <br/>
+        Last generation:
+        <dot:Literal ValueType="DateTime" Text="{value: LastGeneration}" FormatString="d.M.yyyy H:mm" />
+        
+        <br />
+        <dot:RouteLink RouteName="Results">Go to results</dot:RouteLink>
+    </p>
 </body>
 </html>

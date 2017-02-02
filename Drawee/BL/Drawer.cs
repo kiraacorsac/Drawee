@@ -8,17 +8,18 @@ namespace Drawee
     public class Drawer
     {
         public string Name { get; set; }
-        public IEnumerable<string> RefsheetLinks { get; set; }
         public bool IsGuest { get; set; }
+        public bool Picked { get; set; }
+        public string Icon { get; set; }
+        public string Refsheet { get; set; }
+        public IEnumerable<string> InterestingLinks { get; set; }
 
         public Drawer() { }
 
-        public Drawer(string name, IEnumerable<string> refsheetLinks, bool guest = false)
+        public Drawer(string name, string icon)
         {
             Name = name;
-            IsGuest = guest;
-
-            RefsheetLinks = refsheetLinks;
+            Icon = icon;
         }    
     }
 }
